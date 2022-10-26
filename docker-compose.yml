@@ -1,0 +1,26 @@
+version: '1.0'
+
+services:
+  develop:
+    container_name: develop
+    hostname: develop
+    image: taodev/anolisos
+    command: /usr/sbin/sshd -f /root/.ssh/sshd_config -D
+    # restart: always
+    networks:
+      - bridge-dev
+    ports:
+      - "127.0.0.1:11023:22"
+      - "127.0.0.1:11024:1024"
+      - "127.0.0.1:11080:80"
+      - "11000-11010:8000-8010"
+      - "11100:9317"
+    volumes:
+      - ./volume/root:/root
+      - ./volume/code:/code
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  bridge-dev:
+    external: true
