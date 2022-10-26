@@ -69,5 +69,7 @@ echo "root:admin" | chpasswd
 
 wget -O- https://aka.ms/install-vscode-server/setup.sh | bash
 
+code-server --version
+
 # 创建工作目录
 mkdir -p /code
